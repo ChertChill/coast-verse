@@ -1,0 +1,254 @@
+@font-face {
+	font-family: "Winds";
+	src: url('fonts/WindsorC/WindsorC.ttf');
+}
+
+@font-face {
+    font-family: "WindsOld";
+    src: url('fonts/WindsorC/WindsorOld Style.ttf');
+}
+
+html, body {
+    min-width: 1620px;
+    max-width: 1920px;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #0f0f0f;
+    user-select: none;
+}
+
+/* Виньетка */
+#vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+  background-image: url('pics/coast.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background-image 0.5s linear 0.5s;    /* !!! Картинка появляется, только растягивается снизу */
+}
+
+h1 {
+    font-family: Winds;
+    color: #949393;
+    text-shadow: black 3px 2px;
+}
+
+/* Подпись */
+#signature {
+    position: fixed;
+    bottom: 23px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    cursor: default;
+}
+
+    a {
+        text-decoration: none;
+        color: #949393;
+    }
+
+/* Кнопка начала */
+#start {
+    height: 200px;
+    width: 150px;
+    display: block;
+    margin: auto;
+    padding: 300px 0;
+    z-index: 0;
+}
+
+    #start-pic {
+        height: 150px;
+        width: 150px;
+        border-radius: 50px;
+        cursor: pointer;
+        user-select: none;
+        
+    }
+
+    #start-h1 {
+        font-size: 50px;
+        text-align: center;
+        margin: 10px 0 0 5px;
+        cursor: default;
+    }
+
+/* Выплывающее окно */
+.popup-window {
+    position: fixed;    /* Set width, height, margins from the edges */
+    background-color: #949393;
+    font-size: 23px;
+    font-family: Winds;
+    border-left: 3px solid white;
+    border-top: 3px solid white;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    padding: 15px 10px;
+}
+
+    .rules-ul {
+        margin: 12px 0;
+        padding: 3px;
+    }
+
+    .rules-ul:first-of-type {
+        margin-top: 2px;
+    }
+
+/* Правила */
+#rules {
+    position: fixed;
+    left: 50px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+    #rules-div {
+        left: 50px;
+        bottom: 80px;
+        width: 510px;
+        height: 330px;
+        display: none;
+    }
+
+/* Помощь */
+#help {
+    position: fixed;
+    right: 50px;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+    #help-div {
+        right: 50px;
+        bottom: 80px;
+        width: 500px;
+        height: 330px;
+        display: none;
+    }
+
+    #help-div h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    #help-div p {
+        margin: 15px 0;
+        text-indent: 15px;
+    }
+
+/* Проигрывание стихотворения (!!! менять местоположение каждого последующего, чтобы снизить эффект от резкого перехода) */
+#verse-playing {
+    position: fixed;
+    top: 200px; /* !!! Подумать, как можно выровнить по вертикали */
+    height: 500px;
+    width: 100%;
+    user-select: none;
+    z-index: -1;
+}
+
+    .verse-part p {
+        font-family: Winds;
+        font-size: 60px;
+        color: #949393;
+        text-shadow: black 3px 2px;
+        margin: 10px 0;
+        text-align: center;
+        white-space: pre;   /* Или nowrap */
+    }
+
+        #verse-1 {
+            display: none;
+        }
+
+        #verse-2 {
+            position: fixed;
+            top: 200px;
+            width: 100%;
+            display: none;
+        }
+
+        #verse-3 {
+            position: fixed;
+            top: 200px;
+            width: 100%;
+            display: none;
+        }
+
+        #verse-4 {
+            position: fixed;
+            top: 200px;
+            width: 100%;
+            display: none;
+        }
+
+        #verse-5 {
+            position: fixed;
+            top: 200px;
+            width: 100%;
+            display: none;
+        }
+
+/* Финальная сцена */
+#final-scene {
+    position: fixed;
+    color: #949393;
+    margin: 0 auto;
+    text-align: left;
+    vertical-align: middle;
+}
+
+    .verse-full {
+        position: fixed;
+        display: block;
+        width: 50%;     /* !!! Ограничить сужение или решить проблему с централизацией/Предотвратить сужение текста при сжатии меньше допустимого значения (мб fixed с text-align: center, может он ломается из-за большого кол-ва слов(в заголовках мб не ломается/запретить переход на новую строчку)) */
+    }
+
+        .verse-full p {
+            font-size: 30px;
+            text-shadow: black 3px 2px;
+            font-family: Winds;
+            margin: 5px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        #verse-full-1 {
+            top: 50px;
+            margin: 0 20px 0 50px;
+        }
+
+        #verse-full-2 {     /* !!! Для нормального перехода вниз добавить display: flex и сделать что-то с высотой/прокруткой вниз */
+            top: 170px;
+            padding-left: 800px;
+        }
+
+            #stars {
+                line-height: 20px;
+                margin: 0;
+                padding: 0;
+            }
+
+    #rights {
+        position: fixed;
+        bottom: 30px;
+        left: 50px;
+        font-family: Winds;
+        font-size: 22px;
+        cursor: default;
+        white-space: nowrap;
+    }
+
+    #to-start-scene {
+        position: fixed;
+        right: 50px;
+        bottom: 10px;
+        cursor: pointer;
+    }
